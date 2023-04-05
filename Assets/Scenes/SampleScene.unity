@@ -385,6 +385,7 @@ GameObject:
   m_Component:
   - component: {fileID: 785728631}
   - component: {fileID: 785728630}
+  - component: {fileID: 785728632}
   m_Layer: 0
   m_Name: Paddle Kiri
   m_TagString: Untagged
@@ -459,6 +460,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &785728632
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 785728629}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 605d840f9d583c54781f5b50cfc4d2f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  upKey: 119
+  downKey: 115
+  speed: 4
 --- !u!1 &1018247335
 GameObject:
   m_ObjectHideFlags: 0
@@ -553,6 +569,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1880082272}
   - component: {fileID: 1880082271}
+  - component: {fileID: 1880082273}
   m_Layer: 0
   m_Name: Paddle Kanan
   m_TagString: Untagged
@@ -627,6 +644,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1880082273
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1880082270}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 605d840f9d583c54781f5b50cfc4d2f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  upKey: 273
+  downKey: 274
+  speed: 4
 --- !u!1 &1966752296
 GameObject:
   m_ObjectHideFlags: 0
