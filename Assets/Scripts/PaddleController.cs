@@ -9,9 +9,11 @@ public class PaddleController : MonoBehaviour
     public int speed = 0;
 
     private Rigidbody2D rigidbody2D;
-    void Start()
+    private float maxPaddleHeight;
+    void Awake()
     {
         rigidbody2D = GetComponent<Rigidbody2D>();
+        maxPaddleHeight = Camera.main.orthographicSize - 0.5f;
     }
 
     void Update()
@@ -36,6 +38,9 @@ public class PaddleController : MonoBehaviour
 
     void MoveObject(Vector2 movement)
     {
+        Vector2 clampedPosition = transform.position;
+        clampedPosition.y = Mathf.Clamp(clampedPosition.y, -maxPaddleHeight + 2f, maxPaddleHeight);
+        transform.position = clampedPosition;
         rigidbody2D.velocity = movement;
     }
 }
