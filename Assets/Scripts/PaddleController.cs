@@ -7,9 +7,11 @@ public class PaddleController : MonoBehaviour
     public KeyCode upKey;
     public KeyCode downKey;
     public int speed = 0;
+
+    private Rigidbody2D rigidbody2D;
     void Start()
     {
-        
+        rigidbody2D = GetComponent<Rigidbody2D>();
     }
 
     void Update()
@@ -22,11 +24,11 @@ public class PaddleController : MonoBehaviour
 
         if(Input.GetKey(upKey))
         {
-           return Vector2.up;
+           return Vector2.up * speed;
         }
         else if(Input.GetKey(downKey))
         {
-           return Vector2.down;
+           return Vector2.down * speed;
         }
 
         return Vector2.zero;
@@ -34,6 +36,6 @@ public class PaddleController : MonoBehaviour
 
     void MoveObject(Vector2 movement)
     {
-        transform.Translate(movement * speed * Time.deltaTime);
+        rigidbody2D.velocity = movement;
     }
 }
