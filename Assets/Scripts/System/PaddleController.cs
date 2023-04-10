@@ -6,7 +6,7 @@ public class PaddleController : MonoBehaviour
 {
     public KeyCode upKey;
     public KeyCode downKey;
-    public int speed = 0;
+    public float speed = 0;
 
     private Rigidbody2D rigidbody2D;
     private float maxPaddleHeight;
