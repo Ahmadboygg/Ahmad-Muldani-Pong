@@ -13,6 +13,11 @@ public class ScoreUI : MonoBehaviour
     {
         leftPaddleScore = GameObject.Find("Trigger Score Kanan").GetComponent<ScoreTrigger>()._currentScore;
         rightPaddleScore = GameObject.Find("Trigger Score Kiri").GetComponent<ScoreTrigger>()._currentScore;
+        ScoreHandle();
+    }
+
+    void ScoreHandle()
+    {
         scoreTxt.text = $"{leftPaddleScore} : {rightPaddleScore}";
     }
 }

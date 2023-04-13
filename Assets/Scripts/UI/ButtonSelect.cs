@@ -15,7 +15,7 @@ public class ButtonSelect : MonoBehaviour
         {
             if(i == currentSelectedButton)
             {
-                buttons[i].Select();
+                buttons[currentSelectedButton].Select();
             }
         }
 
@@ -41,12 +41,5 @@ public class ButtonSelect : MonoBehaviour
                 currentSelectedButton = buttons.Count -1;
             }
         }
-
-        if(Input.GetKeyDown(KeyCode.Return))
-        {
-            buttons[i].onClick.Invoke();
-        }
-        
-        
     }
 }
