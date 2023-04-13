@@ -42,5 +42,22 @@ public class PaddleController : MonoBehaviour
         clampedPosition.y = Mathf.Clamp(clampedPosition.y, -maxPaddleHeight + 2f, maxPaddleHeight);
         transform.position = clampedPosition;
         rigidbody2D.velocity = movement;
+        Debug.Log($"{gameObject} : {PaddleDirectionString()}");
+    }
+
+    string PaddleDirectionString()
+    {
+        if(rigidbody2D.velocity.y > 0)
+        {
+            return $"Bergerak ke atas dengan kecepatan {speed}";
+        }
+        else if(rigidbody2D.velocity.y < 0)
+        {
+            return $"Bergerak ke bawah dengan kecepatan {speed}";
+        }
+        else
+        {
+            return "Tidak Bergerak";
+        }
     }
 }
