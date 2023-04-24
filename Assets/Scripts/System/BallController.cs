@@ -2,9 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BallController : MonoBehaviour, IScoreable
+public class BallController : MonoBehaviour, IScoreable, ISpeedable
 {
     public float speed = 0;
+    public float speedUp = 0;
+    private float currentSpeed;
     private Rigidbody2D rigidbody2D;
     private Vector2 ballDirection;
     private Vector2 currentDirection;
@@ -14,7 +16,8 @@ public class BallController : MonoBehaviour, IScoreable
     {
         rigidbody2D = GetComponent<Rigidbody2D>();
         currentDirection = BallDirection.direction;
-        rigidbody2D.velocity = currentDirection * speed;
+        currentSpeed = speed;
+        rigidbody2D.velocity = currentDirection * currentSpeed;
     }
 
     void Update()
@@ -24,10 +27,14 @@ public class BallController : MonoBehaviour, IScoreable
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.collider.CompareTag("Wall"))
+        if(other.collider.CompareTag("Wall"))
         {
             Vector3 direction = Vector3.Reflect(lastVelocity.normalized, other.contacts[0].normal);
-            rigidbody2D.velocity = direction * speed;
+            rigidbody2D.velocity = direction * currentSpeed;
+        }
+        else
+        {
+            rigidbody2D.velocity = rigidbody2D.velocity.normalized * currentSpeed;
         }
     }
 
@@ -38,19 +45,30 @@ public class BallController : MonoBehaviour, IScoreable
             if(other.gameObject.name =="Trigger Score Kiri")
             {
                 BallDirection.direction = Vector2.left ;
+                Destroy(gameObject);
             }
             else if(other.gameObject.name == "Trigger Score Kanan")
             {
                 BallDirection.direction = Vector2.right ;
+                Destroy(gameObject);
             }
-            
-            Destroy(gameObject);
         }
     }
 
     public void GetScore()
     {
-        Score.score++;
-    }
     
+    }
+
+    public void SpeedUp()
+    {
+        currentSpeed += speedUp;
+        Debug.Log("Speed :" +currentSpeed);
+    }
+
+    public void ResetSpeedUp()
+    {
+        currentSpeed = speed;
+        Debug.Log("Speed :" +currentSpeed);
+    }
 }

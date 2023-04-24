@@ -15,6 +15,18 @@ public class ScoreTrigger : MonoBehaviour
         {
             ScoreCount();
         }
+
+        ISpeedable speedable = other.GetComponent<ISpeedable>();
+        if(speedable != null)
+        {
+            var speedUpObject = GameObject.FindObjectsOfType<BallSpeedUp>();
+            foreach(BallSpeedUp obj in speedUpObject)
+            {
+                Destroy(obj.gameObject);
+            }
+            speedable.ResetSpeedUp();
+            SpeedUp.ResetCurrentSpeedUpSpawn();
+        }
     }
 
     private void ScoreCount()
