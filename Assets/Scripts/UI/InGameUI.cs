@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class InGameUI : MonoBehaviour
 {
-    public GameObject gameOverUI;
+    public GameObject gameOverUI = null;
+    public GameObject pauseMenuUI = null;
     private ScoreTrigger leftPaddleScoreTrigger;
     private ScoreTrigger rightPaddleScoreTrigger;
 
@@ -26,5 +27,11 @@ public class InGameUI : MonoBehaviour
             gameOverUI.SetActive(true);
             Time.timeScale = 0f;
         }
+    }
+
+    public void PauseMenu()
+    {
+        pauseMenuUI.SetActive(true);
+        Time.timeScale = 0f;
     }
 }

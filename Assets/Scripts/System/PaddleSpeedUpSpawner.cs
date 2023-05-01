@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BallSpeedUpSpawner : MonoBehaviour
+public class PaddleSpeedUpSpawner : MonoBehaviour
 {
-    public GameObject ballSpeedUpPrefab;
+    public GameObject PaddleSpeedUpPrefab;
     public int maxSpeedUpSpawn = 0;
     public int _currentSpeedUpSpawn => currentSpeedUpSpawn;
     public float spawnAreaXOffset;
@@ -15,7 +15,7 @@ public class BallSpeedUpSpawner : MonoBehaviour
     private float spawnAreaX;
     private float spawnAreaY;
     private float currentSpawnTime;
-    private Vector2 ballSpeedUpPosition;
+    private Vector2 paddleSpeedUpPosition;
     void Awake()
     {
         spawnAreaX = Camera.main.orthographicSize - spawnAreaXOffset;
@@ -29,29 +29,29 @@ public class BallSpeedUpSpawner : MonoBehaviour
 
     void Update()
     {
-        if(BallSpeedUpSpawnCount.currentSpeedUpSpawn < maxSpeedUpSpawn )
+        if(PaddleSpeedUpSpawnCount.currentSpeedUpSpawn < maxSpeedUpSpawn )
         {
             currentSpawnTime -= Time.deltaTime;
 
             if(currentSpawnTime <= 0f)
             {
-                BallSpeedUpSpawnCount.currentSpeedUpSpawn++;
-                GetBallSpeedUpCoordinate();
-                Instantiate(ballSpeedUpPrefab, ballSpeedUpPosition, Quaternion.identity);
+                PaddleSpeedUpSpawnCount.currentSpeedUpSpawn++;
+                GetPaddleSpeedUpCoordinate();
+                Instantiate(PaddleSpeedUpPrefab, paddleSpeedUpPosition, Quaternion.identity);
                 currentSpawnTime = spawnTime;
-                Debug.Log($"{GetBallSpeedUpCoordinate()}");
+                Debug.Log($"{GetPaddleSpeedUpCoordinate()}");
             }
         }
     }
 
-    Vector2 GetBallSpeedUpCoordinate()
+    Vector2 GetPaddleSpeedUpCoordinate()
     {
         var GenerateCoordinate = new Vector2 (Random.Range(-spawnAreaX, spawnAreaX), Random.Range(-spawnAreaY,spawnAreaY));
-        ballSpeedUpPosition = GenerateCoordinate;
-        return ballSpeedUpPosition;
+        paddleSpeedUpPosition = GenerateCoordinate;
+        return paddleSpeedUpPosition;
     }
 
     private void OnDrawGizmosSelected() {
-        Gizmos.DrawWireCube(Vector3.zero,ballSpeedUpPosition);
+        Gizmos.DrawWireCube(Vector3.zero,paddleSpeedUpPosition);
     }
 }

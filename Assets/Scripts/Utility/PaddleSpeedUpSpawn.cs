@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public static class SpeedUp 
+public static class PaddleSpeedUpSpawnCount
 {
     public static int currentSpeedUpSpawn;
 
@@ -10,6 +10,4 @@ public static class SpeedUp
     {
         currentSpeedUpSpawn = 0;
     }
-
-
 }

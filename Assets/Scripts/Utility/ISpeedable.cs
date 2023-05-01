@@ -4,6 +4,8 @@ using UnityEngine;
 
 public interface ISpeedable 
 {
-   void SpeedUp();
-   void ResetSpeedUp();
+   void BallSpeedUp();
+   void ResetBallSpeedUp();
+   void PaddleSpeedUp();
+   void ResetPaddleSpeedUp();
 }

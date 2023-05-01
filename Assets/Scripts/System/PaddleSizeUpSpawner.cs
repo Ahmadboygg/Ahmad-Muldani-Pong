@@ -2,20 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BallSpeedUpSpawner : MonoBehaviour
+public class PaddleSizeUpSpawner : MonoBehaviour
 {
-    public GameObject ballSpeedUpPrefab;
-    public int maxSpeedUpSpawn = 0;
-    public int _currentSpeedUpSpawn => currentSpeedUpSpawn;
+    public GameObject PaddleSizeUpPrefab;
+    public int maxSizeUpSpawn = 0;
+    public int _currentSizeUpSpawn => currentSizeUpSpawn;
     public float spawnAreaXOffset;
     public float spawnAreaYOffset;
     public float spawnTime = 0f;
 
-    private int currentSpeedUpSpawn;
+    private int currentSizeUpSpawn;
     private float spawnAreaX;
     private float spawnAreaY;
     private float currentSpawnTime;
-    private Vector2 ballSpeedUpPosition;
+    private Vector2 paddleSizeUpPosition;
     void Awake()
     {
         spawnAreaX = Camera.main.orthographicSize - spawnAreaXOffset;
@@ -29,29 +29,29 @@ public class BallSpeedUpSpawner : MonoBehaviour
 
     void Update()
     {
-        if(BallSpeedUpSpawnCount.currentSpeedUpSpawn < maxSpeedUpSpawn )
+        if(PaddleSizeUpSpawnCount.currentSizeUpSpawn < maxSizeUpSpawn )
         {
             currentSpawnTime -= Time.deltaTime;
 
             if(currentSpawnTime <= 0f)
             {
-                BallSpeedUpSpawnCount.currentSpeedUpSpawn++;
-                GetBallSpeedUpCoordinate();
-                Instantiate(ballSpeedUpPrefab, ballSpeedUpPosition, Quaternion.identity);
+                PaddleSizeUpSpawnCount.currentSizeUpSpawn++;
+                GetPaddleSizeUpCoordinate();
+                Instantiate(PaddleSizeUpPrefab, paddleSizeUpPosition, Quaternion.identity);
                 currentSpawnTime = spawnTime;
-                Debug.Log($"{GetBallSpeedUpCoordinate()}");
+                Debug.Log($"{GetPaddleSizeUpCoordinate()}");
             }
         }
     }
 
-    Vector2 GetBallSpeedUpCoordinate()
+    Vector2 GetPaddleSizeUpCoordinate()
     {
         var GenerateCoordinate = new Vector2 (Random.Range(-spawnAreaX, spawnAreaX), Random.Range(-spawnAreaY,spawnAreaY));
-        ballSpeedUpPosition = GenerateCoordinate;
-        return ballSpeedUpPosition;
+        paddleSizeUpPosition = GenerateCoordinate;
+        return paddleSizeUpPosition;
     }
 
     private void OnDrawGizmosSelected() {
-        Gizmos.DrawWireCube(Vector3.zero,ballSpeedUpPosition);
+        Gizmos.DrawWireCube(Vector3.zero,paddleSizeUpPosition);
     }
 }

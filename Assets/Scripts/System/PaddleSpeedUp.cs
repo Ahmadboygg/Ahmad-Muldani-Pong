@@ -2,15 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BallSpeedUp : MonoBehaviour
+public class PaddleSpeedUp : MonoBehaviour
 {
-    void OnTriggerEnter2D(Collider2D other) 
+   void OnTriggerEnter2D(Collider2D other) 
     {
         ISpeedable speedable = other.GetComponent<ISpeedable>();
         if(speedable != null)
         {
-            speedable.BallSpeedUp();
-            BallSpeedUpSpawnCount.currentSpeedUpSpawn--;
+            speedable.PaddleSpeedUp();
+            PaddleSpeedUpSpawnCount.currentSpeedUpSpawn--;
             Destroy(gameObject);
         }
     }
